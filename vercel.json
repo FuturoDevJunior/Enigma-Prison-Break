@@ -1,8 +1,11 @@
 {
-  "routes": [
+  "builds": [
     {
-      "handle": "filesystem"
-    },
+      "src": "Prison Break.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
     {
       "src": "/(.*)",
       "dest": "/Prison Break.html",
@@ -12,10 +15,5 @@
         "X-Content-Type-Options": "nosniff"
       }
     }
-  ],
-  "build": {
-    "env": {
-      "NODE_ENV": "production"
-    }
-  }
+  ]
 } 
