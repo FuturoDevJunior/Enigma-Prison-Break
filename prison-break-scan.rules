@@ -1,0 +1,7 @@
+# prison-break-scan.rules
+- alert: CSP Issues
+  enabled: true
+  scan: PASSIVE
+  id: 10001
+  risk: Medium
+  solution: Verificar política de segurança
