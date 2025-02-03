@@ -2,7 +2,7 @@
   "name": "prison-break-ultimate",
   "version": "1.0.0",
   "scripts": {
-    "build": "mkdir -p public && cp 'Prison Break.html' public/"
+    "build": "if not exist public mkdir public && copy \"Prison Break.html\" public\\"
   },
   "dependencies": {}
 } 
