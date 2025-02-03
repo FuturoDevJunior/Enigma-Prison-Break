@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="devferreira-escape">
+<!-- T4T00-M1CH43L-SC0F13LD -->
+<head>
+  <meta charset="UTF-8">
+  <title>FOX RIVER PRISON BREAK ULTIMATE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0a0a">
+  
+  <!-- Manifesto PWA -->
+  <link rel="manifest" href="/app.webmanifest">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="PB Xperience">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+
+  <!-- Pré-carregamento -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="video" href="foxriver.mp4" type="video/mp4">
+  
+  <!-- SEO -->
+  <meta property="og:image" content="https://m.media-amazon.com/images/M/MV5BMTg5NTkwOTQyN15BMl5BanBnXkFtZTcwMjI3NzI3Mw@@._V1_FMjpg_UX1000_.jpg">
+  <meta name="description" content="Experiência definitiva da série que redefiniu o gênero de ação!">
+
+  <!-- Políticas de Segurança -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'none';
+    script-src 'self' 'sha256-myJ8x2RckGtI7Cz9P8fJnlSPphp1xHh8C2F/8UVNOq4=';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data:;
+    font-src 'self' data:;
+    connect-src 'self';
+    media-src 'self' data: blob:;
+    base-uri 'none';
+    form-action 'none'
+  ">
+
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Permissions-Policy" content="
+    accelerometer=(),
+    ambient-light-sensor=(),
+    autoplay=(self),
+    camera=(),
+    encrypted-media=(),
+    fullscreen=(),
+    geolocation=(),
+    gyroscope=(),
+    magnetometer=(),
+    microphone=(),
+    midi=(),
+    payment=(),
+    picture-in-picture=(),
+    speaker=(),
+    usb=(),
+    vr=()
+  ">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+
+  <style>
+    :root {
+      --sangue: #8b0000;    /* Cor da mancha de sangue de Veronica */
+      --alerta: #ff4500;    /* Laranja dos uniformes dos guardas */
+      --grades: #2d2d2d;     /* Cor das grades da cela */
+      --azul-plano: #1e90ff;/* Azul do plano de fuga tatuado */
+    }
+
+    @font-face {
+      font-family: 'PrisonFont';
+      src: url('data:font/woff2;base64,d09GMgABAAAA...') format('woff2');
+      font-display: swap;
+    }
+
+    /* Reset Global */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Estrutura Principal */
+    body {
+      background: #000 url('data:image/png;base64,iVBORw0KGgo...') repeat; /* Padrão de concreto */
+      color: #fff;
+      font-family: 'PrisonFont', monospace;
+      overflow-x: hidden;
+      cursor: url('data:image/png;base64,iVBORw0KGgo...'), auto; /* Chave inglesa */
+      line-height: 1.2;
+    }
+
+    .efeito-prisao {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: 
+        repeating-linear-gradient(90deg, 
+          rgba(45,45,45,0.3) 0 2px, 
+          transparent 2px 5px),
+        radial-gradient(circle at center, 
+          rgba(139,0,0,0.1) 0%, 
+          transparent 60%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .efeito-prisao::before {
+      content: "S0C13TY D31TY"; /* Easter Egg 1: Código da cela */
+      opacity: 0.01;
+      position: fixed;
+      z-index: -1;
+    }
+
+    #video-principal {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(0.8) contrast(1.4);
+      mix-blend-mode: hard-light;
+      z-index: 0;
+    }
+
+    .container-titulo {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .container-titulo:hover::after {
+      content: "Acredite no Plano"; /* Easter Egg 2 */
+      position: absolute;
+      bottom: -2rem;
+      color: var(--azul-plano);
+      font-size: 1.5rem;
+      animation: blink 1s infinite;
+    }
+
+    .titulo-principal {
+      font-size: clamp(3rem, 12vw, 8rem);
+      color: var(--alerta);
+      text-shadow: 0.3rem 0.3rem 0 #000;
+      animation: glitch 3s infinite;
+    }
+
+    @keyframes glitch {
+      0%, 100% { transform: translate(0); }
+      25% { transform: translate(-2px, 2px); }
+      50% { transform: translate(2px, -2px); }
+      75% { transform: translate(-2px, -2px); }
+    }
+
+    .terminal-seguranca {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: rgba(0,0,0,0.9);
+      padding: 1rem;
+      border: 2px solid var(--sangue);
+      font-family: monospace;
+      z-index: 3;
+    }
+
+    .terminal-seguranca::before {
+      content: "CÉLULA 40"; /* Easter Egg 3 */
+      position: absolute;
+      top: -1.5rem;
+      color: var(--alerta);
+      font-size: 0.8rem;
+    }
+
+    .assinatura-dev {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      opacity: 0.05;
+      z-index: 9999;
+      -webkit-user-select: none;
+      user-select: none;
+      pointer-events: none;
+      font-size: 0.8rem;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="efeito-prisao" onclick="this.style.transform='rotate('+Math.random()*2+'deg)'"></div>
+  
+  <video id="video-principal" autoplay muted loop playsinline>
+    <source src="data:video/mp4;base64,AAAAFGZ0eXBpcGU..." type="video/mp4">
+  </video>
+
+  <div class="container-titulo">
+    <h1 class="titulo-principal">PRISON BREAK</h1>
+    <div class="terminal-seguranca" data-code="1-7-2-6-2-0">
+      <div style="color:var(--sangue);">SISTEMA DE SEGURANÇA</div>
+      <div style="color:var(--azul-plano);">STATUS: <span>FUGITIVO DETECTADO</span></div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      // Sistema de Glitch Dinâmico
+      setInterval(() => {
+        const titulo = document.querySelector('.titulo-principal');
+        titulo.style.textShadow = 
+          `${Math.random()*4-2}px ${Math.random()*4-2}px 0 rgba(0,0,0,0.8)`;
+      }, 100);
+
+      // Controle de Vídeo
+      const video = document.getElementById('video-principal');
+      if(video.play) {
+        video.play().catch(() => {
+          video.muted = true;
+          video.play();
+        });
+      }
+
+      // Proteção Contra Desistência
+      window.addEventListener('beforeunload', (e) => {
+        e.preventDefault();
+        e.returnValue = 'A fuga ainda não está completa!';
+      });
+
+      // Easter Egg 4: Código da Enron (Clique 5x no terminal)
+      let clicks = 0;
+      document.querySelector('.terminal-seguranca').addEventListener('click', () => {
+        if(++clicks === 5) {
+          alert('Código Enron: 1-7-2-6-2-0');
+          window.location.hash = '#blueprint';
+        }
+      });
+
+      // Easter Egg 5: Tecla Konami Code
+      const konami = [38,38,40,40,37,39,37,39,66,65];
+      let input = [];
+      document.addEventListener('keydown', (e) => {
+        input.push(e.keyCode);
+        if(input.toString().includes(konami)) {
+          document.body.style.filter = 'hue-rotate(180deg)';
+          setTimeout(() => document.body.style.filter = '', 2000);
+        }
+      });
+
+      // Easter Egg 6: Relógio de Paredão
+      setInterval(() => {
+        const now = new Date();
+        document.title = `FOX RIVER ${now.getHours()}:${now.getMinutes().toString().padStart(2,'0')}`;
+      }, 1000);
+    })();
+  </script>
+  <span class="assinatura-dev">DevFerreiraG</span>
+</body>
+</html>
