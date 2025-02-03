@@ -16,9 +16,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Validate HTML
-        run: |
-          docker run -v $PWD:/data ghcr.io/validator/validator:latest \
-            --verbose /data/Prison\ Break.html
+        uses: docker://validator/validator
+        with:
+          args: -v /github/workspace/Prison\ Break.html
 
   security:
     name: Security Scan
@@ -27,11 +27,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run Security Scan
-        uses: shiftleft/scan-action@v2
+      - name: ZAP Security Scan
+        uses: zaproxy/action-baseline@v0.8.0
         with:
-          output: reports
-          scan-type: code
+          target: 'http://localhost:8080/Prison%20Break.html'
+          rules_file_name: 'prison-break-scan.rules'
 
   deploy:
     name: Deploy to GitHub Pages
@@ -61,23 +61,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install Lighthouse
-        run: npm install -g lighthouse @lhci/cli
+      - name: Start local server
+        run: |
+          python -m http.server 8000 &
+          echo "Server running on port 8000"
 
       - name: Run Lighthouse
-        run: |
-          lighthouse http://localhost:8080/Prison%20Break.html \
-            --output=html \
-            --output-path=./lighthouse-report.html \
-            --chrome-flags="--headless --no-sandbox"
-
-      - name: Upload Report
-        uses: actions/upload-artifact@v4
+        uses: treosh/lighthouse-ci-action@v11
         with:
-          name: lighthouse-report
-          path: ./lighthouse-report.html
+          urls: 'http://localhost:8000/Prison%20Break.html'
+          uploadArtifacts: true
+          temporaryPublicStorage: true
